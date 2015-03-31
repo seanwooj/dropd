@@ -19,3 +19,5 @@ group :development, :test do
   gem 'binding_of_caller'
 end
 
+# Assets
+gem 'foundation-rails'
