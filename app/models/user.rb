@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates(:password, :length => {:minimum => 6}, :allow_blank => true)
 
+  has_many :orders
+
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
