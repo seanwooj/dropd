@@ -1,6 +1,8 @@
 %table.orders
   %thead
     %tr
+      - if current_user.boss?
+        %th Client
       %th Order Number
       %th Order Placed At
       %th Name
@@ -18,6 +20,8 @@
   %tbody
     - orders.each do |order|
       %tr
+        - if current_user.boss?
+          %td= order.user.name
         %td= order.order_number
         %td= order.created_at
         %td= order.customer_name
