@@ -14,6 +14,7 @@ gem 'thin'
 gem 'bcrypt'
 gem 'cancancan', '~> 1.10'
 gem 'rails_12factor'
+gem 'state_machines'
 
 group :development, :test do
   gem 'byebug'
