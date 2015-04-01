@@ -1,0 +1,16 @@
+%h1 Sign In
+
+.row
+  .small-6.small-centered.columns
+    = form_for :session, :url => login_path do |f|
+      .row
+        .small-12.columns
+          = f.label :email
+          = f.text_field :email
+        .small-12.columns
+          = f.label :password
+          = f.password_field :password
+        .small-12.columns
+          = f.submit "Login", :class => 'button expand'
+    = "New user?"
+    = link_to 'Sign up!', signup_path
