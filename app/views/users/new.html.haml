@@ -1,2 +1,20 @@
 .row
   %h1 Sign Up!
+  = form_for @user do |f|
+    .row
+      .small-12.columns
+        = f.label :name
+        = f.text_field :name
+      .small-12.columns
+        = f.label :email
+        = f.text_field :email
+      .small-6.columns
+        = f.label :password
+        = f.password_field :password
+      .small-6.columns
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+      .small-12.columns
+        = f.submit "Create account!", :class => 'button expand'
+
+
