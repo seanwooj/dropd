@@ -1,0 +1,26 @@
+.row
+  .small-6.columns
+    %h2 Create an Order
+    = form_for @order, :url => user_orders_path do |f|
+      = f.label :order_number
+      = f.text_field :order_number
+      = f.label :order_contents
+      = f.text_field :order_contents
+      = f.label :customer_name
+      = f.text_field :customer_name
+      = f.label :customer_email
+      = f.text_field :customer_email
+      = f.label :customer_phone
+      = f.text_field :customer_phone
+      = f.label :customer_delivery_address
+      = f.text_field :customer_delivery_address
+      = f.label :customer_delivery_city
+      = f.text_field :customer_delivery_city
+      = f.label :customer_delivery_state
+      = f.text_field :customer_delivery_state
+      = f.label :customer_delivery_zipcode
+      = f.text_field :customer_delivery_zipcode
+      = f.label :note
+      = f.text_area :note
+      = f.submit 'Create Order', :class => 'button expand'
+

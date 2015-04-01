@@ -16,7 +16,7 @@
       %th Last Updated At
 
   %tbody
-    - @orders.each do |order|
+    - orders.each do |order|
       %tr
         %td= order.order_number
         %td= order.created_at
