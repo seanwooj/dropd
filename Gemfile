@@ -27,3 +27,4 @@ end
 
 # Assets
 gem 'foundation-rails'
+gem 'jquery-datatables-rails', '~> 3.2.0'
