@@ -1,0 +1,4 @@
+- flash.each do |message_type, message|
+  .alert-box{:class => message_type, :data => {:alert => true}}
+    = message
+    %a.close{:href => '#'} &times
