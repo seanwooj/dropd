@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    resources :orders, :controller => 'users/orders'
+  end
   resources :orders, :only => [:index, :show]
 end

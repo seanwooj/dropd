@@ -1,0 +1,33 @@
+%table.orders
+  %thead
+    %tr
+      %th Order Number
+      %th Order Placed At
+      %th Name
+      %th Note
+      %th Email
+      %th Phone
+      %th Status
+      %th Contents
+      %th Delivery Address
+      %th Delivery City
+      %th Delivery State
+      %th Delivery Zipcode
+      %th Last Updated At
+
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.order_number
+        %td= order.created_at
+        %td= order.customer_name
+        %td= order.note
+        %td= order.customer_email
+        %td= order.customer_phone
+        %td= order.status
+        %td= order.order_contents
+        %td= order.customer_delivery_address
+        %td= order.customer_delivery_city
+        %td= order.customer_delivery_state
+        %td= order.customer_delivery_zipcode
+        %td= order.updated_at

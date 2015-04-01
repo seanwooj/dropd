@@ -15,6 +15,7 @@ gem 'bcrypt'
 gem 'cancancan', '~> 1.10'
 gem 'rails_12factor'
 gem 'state_machines'
+gem 'annotate', '~> 2.6.6'
 
 group :development, :test do
   gem 'byebug'
