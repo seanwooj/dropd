@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
-    redirect_to current_user if logged_in?
+    redirect_to welcome_path if logged_in?
   end
 
   def create
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to Dropd!"
       log_in @user
-      redirect_to @user
+      redirect_to welcome_path
     else
       render 'new'
     end

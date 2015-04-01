@@ -14,7 +14,7 @@ gem 'thin'
 gem 'bcrypt'
 gem 'cancancan', '~> 1.10'
 gem 'rails_12factor'
-gem 'state_machines'
+gem 'state_machines-activerecord'
 gem 'annotate', '~> 2.6.6'
 
 group :development, :test do

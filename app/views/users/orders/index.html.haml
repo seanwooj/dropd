@@ -1,4 +1,10 @@
-%h2 Orders
-= link_to 'new order', new_user_order_path(@user), :class => 'button'
-= render :partial => 'shared/tables/orders_table', :locals => {:orders => @orders}
+.subnav
+  .row
+    .small-12.columns
+      %ul.cf
+        %li
+          = link_to 'Create New Order', new_user_order_path(@user), :class => 'button tiny'
+.row
+  .small-12.columns
+    = render :partial => 'shared/tables/orders_table', :locals => {:orders => @orders}
 

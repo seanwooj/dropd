@@ -1,0 +1,19 @@
+.row
+  .small-12.columns
+    %h3= "Welcome, #{current_user.name.titleize}!"
+    %p Here are a few things to help you get started with Dropd.
+    %hr
+  .small-12.large-8.columns
+    %ul.welcome_links
+      - if current_user.boss?
+        = link_to "View all orders", orders_path
+        %p See all client orders and manage them.
+      - else
+        %li
+          = link_to "Create a new order", new_user_order_path(current_user)
+          %p Get your customer orders fulfilled
+        %li
+          = link_to "See your open orders", user_orders_path(current_user)
+          %p See the status of your current orders.
+  .small-12.large-4.columns
+    = render :partial => 'shared/help_panel'

@@ -4,18 +4,17 @@
       - if current_user.boss?
         %th Client
       %th Order Number
+      %th Status
       %th Order Placed At
       %th Name
       %th Note
       %th Email
       %th Phone
-      %th Status
       %th Contents
       %th Delivery Address
-      %th Delivery City
-      %th Delivery State
-      %th Delivery Zipcode
       %th Last Updated At
+      - if current_user.boss?
+        %th Actions
 
   %tbody
     - orders.each do |order|
@@ -23,15 +22,14 @@
         - if current_user.boss?
           %td= order.user.name
         %td= order.order_number
-        %td= order.created_at
+        %td= order.status
+        %td= order.created_at.strftime('%m/%d/%Y')
         %td= order.customer_name
         %td= order.note
         %td= order.customer_email
         %td= order.customer_phone
-        %td= order.status
         %td= order.order_contents
-        %td= order.customer_delivery_address
-        %td= order.customer_delivery_city
-        %td= order.customer_delivery_state
-        %td= order.customer_delivery_zipcode
-        %td= order.updated_at
+        %td= "#{order.customer_delivery_address}, #{order.customer_delivery_city}, #{order.customer_delivery_state} #{order.customer_delivery_zipcode}"
+        %td= order.updated_at.strftime('%m/%d/%Y')
+        - if current_user.boss?
+          %td Actions

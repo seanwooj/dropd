@@ -36,4 +36,23 @@ class Order < ActiveRecord::Base
   validates :customer_delivery_state, :presence => true
   validates :customer_delivery_zipcode, :presence => true
   validates :user_id, :presence => true
+
+  state_machine :status, :initial => :open do
+    around_transition do |order, transition, block|
+      order.status_transitions.create!(transition)
+      block.call
+    end
+
+    event :contact_customer do
+      transition :open => :contacted_customer
+    end
+
+    event :begin_delivery do
+      transition :contacted_customer => :out_for_delivery
+    end
+
+    event :deliver do
+      transition [:out_for_delivery, :open, :contacted_customer] => :delivered
+    end
+  end
 end

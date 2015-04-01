@@ -1,4 +1,7 @@
-%h2 Orders
+.row
+  .small-12.columns
+    %h4 All Orders
+    %hr
 
 = render :partial => 'shared/tables/orders_table', :locals => {:orders => @orders}
 
