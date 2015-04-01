@@ -5,9 +5,12 @@
   .small-8.columns
     %ul.pricing-table
       %li.title= "Order #{@order.id}"
-      %li.price= @order.status
+      %li.price= @order.human_status_name
       %li.description= "Note: #{@order.note}"
       %li.bullet-item= "Address: #{@order.customer_delivery_address}, #{@order.customer_delivery_city}, #{@order.customer_delivery_state} #{@order.customer_delivery_zipcode}"
       %li.bullet-item= "Contact Info: #{@order.customer_name} / #{@order.customer_phone} / #{@order.customer_email}"
       %li.cta-button
-        =link_to 'Update Status', '#', :class => 'button'
+        - @order.status_events.each do |event|
+          = form_for @order, :url => update_status_order_path(@order), :method => :put do |f|
+            = f.hidden_field :event, :value => event
+            = f.submit "#{event.to_s.humanize.titleize}", :class => 'button', :style => 'display: inline-block;'

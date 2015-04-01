@@ -39,7 +39,7 @@ class Order < ActiveRecord::Base
 
   state_machine :status, :initial => :open do
     around_transition do |order, transition, block|
-      order.status_transitions.create!(transition)
+      order.status_transitions.create!({:transition => transition})
       block.call
     end
 
@@ -53,6 +53,10 @@ class Order < ActiveRecord::Base
 
     event :deliver do
       transition [:out_for_delivery, :open, :contacted_customer] => :delivered
+    end
+
+    event :cancel do
+      transition all => :cancelled
     end
   end
 end

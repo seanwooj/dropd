@@ -20,8 +20,12 @@
     - orders.each do |order|
       %tr
         - if current_user.boss?
-          %td= order.user.name
-        %td= order.order_number
+          %td= link_to order.user.name, user_path(order.user)
+        %td
+          - if current_user.boss?
+            = link_to order.order_number, order_path(order)
+          - else
+            order.order_number
         %td= order.status
         %td= order.created_at.strftime('%m/%d/%Y')
         %td= order.customer_name
@@ -32,4 +36,9 @@
         %td= "#{order.customer_delivery_address}, #{order.customer_delivery_city}, #{order.customer_delivery_state} #{order.customer_delivery_zipcode}"
         %td= order.updated_at.strftime('%m/%d/%Y')
         - if current_user.boss?
-          %td Actions
+          %td
+            - order.status_events.each do |event|
+              = form_for order, :url => update_status_order_path(order), :method => :put do |f|
+                = f.hidden_field :event, :value => event
+                = f.hidden_field :ret_url, :value => request.original_url
+                = f.submit "#{event.to_s.humanize.titleize}", :class => 'button tiny'

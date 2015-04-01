@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :orders, :controller => 'users/orders'
   end
-  resources :orders, :only => [:index, :show, :update]
+  resources :orders, :only => [:index, :show, :update] do
+    member do
+      put :update_status
+    end
+  end
 end
