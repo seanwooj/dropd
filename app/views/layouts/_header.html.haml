@@ -11,22 +11,13 @@
     / Right Nav Section
     %ul.right
       - if logged_in?
-        %li.active
-          = link_to "Log Out", logout_path, :method => :delete
+        %li.has-dropdown
+          %a{:href => "#"} Account
+          %ul.dropdown
+            %li
+              = link_to "Log Out", logout_path, :method => :delete
       - else
         %li.active
           = link_to "Sign In", login_path
         %li
           = link_to "Sign Up", signup_path
-
-      %li.has-dropdown
-        %a{:href => "#"} Right Button Dropdown
-        %ul.dropdown
-          %li
-            %a{:href => "#"} First link in dropdown
-          %li
-            %a{:href => "#"} Active link in dropdown
-    / Left Nav Section
-    / %ul.left
-    /   %li
-    /     %a{:href => "#"} Left Nav Button

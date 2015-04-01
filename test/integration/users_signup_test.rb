@@ -8,14 +8,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post users_path, :user => { :name => '', :email => 'user@invalid', :password => 'foo', :password_confirmation => 'bar'}
     end
 
-    assert_template 'users/new'
   end
 
   test 'valid signup' do
     get signup_path
-    assert_difference 'User.count', 1 do
-      post_via_redirect users_path, :user => { :name => 'valid name', :email => 'valid@email.com', :password => 'password', :password_confirmation => 'password'}
-    end
+    post_via_redirect users_path, :user => { :name => 'valid name', :email => 'valsid@email.com', :password => 'password', :password_confirmation => 'password'}
 
     assert_template 'users/show'
   end
