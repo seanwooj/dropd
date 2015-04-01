@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'thin'
 gem 'bcrypt'
 gem 'cancancan', '~> 1.10'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug'
