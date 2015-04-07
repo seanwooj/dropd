@@ -3,4 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('.orders').dataTable()
+  $('.orders').dataTable({
+  })
